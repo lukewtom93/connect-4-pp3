@@ -8,7 +8,11 @@ def create_board():
     Creates blank board
     """
     board = np.zeros((6, 7))
+    
     return board
+
+def print_board(board):
+    print(np.flip(board, 0))
 
 def valid_location(board, col):
     """
@@ -18,11 +22,17 @@ def valid_location(board, col):
     return board[5][col] == 0
 
 def next_open_row(board, col):
+    """
+    Checks for empty rows
+    """
     for row in range(ROW_COUNT):
         if board[row][col] == 0:
             return row
 
 def drop_peice(board, row, col, peice):
+    """
+    Drops players peice into the board
+    """
     board[row][col] = peice
 
 board = create_board()
@@ -44,7 +54,7 @@ while not game_over:
             row = next_open_row(board, col)
             drop_peice(board, row, col, 2)
 
-    print(board)
+    print_board(board)
 
     turn += 1
     turn = turn % 2 
