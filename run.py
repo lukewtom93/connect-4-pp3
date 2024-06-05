@@ -12,6 +12,10 @@ def create_board():
     return board
 
 def print_board(board):
+    """
+    Rectifies numpy 0.0 index.
+    Flips board to play from the bottom.
+    """
     print(np.flip(board, 0))
 
 def valid_location(board, col):
@@ -42,13 +46,13 @@ turn = 0
 
 while not game_over:
     if turn == 0:
-        col = int(input("Player One's up\nSelect a column between 0-6: "))
+        col = int(input("Player One's up\nSelect a column between 0-6: \n"))
 
         if valid_location(board, col):
             row = next_open_row(board, col)
             drop_peice(board, row, col, 1)
     else:
-        col = int(input("Player Two's up\nSelect a column between 0-6: "))
+        col = int(input("Player Two's up\nSelect a column between 0-6: \n"))
 
         if valid_location(board, col):
             row = next_open_row(board, col)
