@@ -23,7 +23,12 @@ def valid_location(board, col):
     Checking location on the board is free
     to play into.
     """
-    return board[ROW_COUNT-1][col] == 0
+    
+    if col <= ROW_COUNT:
+        return board[ROW_COUNT-1][col] == 0
+
+        
+    
 
 def next_open_row(board, col):
     """
@@ -68,6 +73,7 @@ def winning_move(board, peice):
                 return True
 
 
+
 board = create_board()
 print(board)
 game_over = False
@@ -80,7 +86,9 @@ while not game_over:
         if valid_location(board, col):
             row = next_open_row(board, col)
             drop_peice(board, row, col, 1)
-
+        else:     
+            print('Invalid selection\nPlease select number between 0-6')
+            continue
             if winning_move(board, 1):
                 print("Player 1 wins")
                 game_over = True
@@ -90,6 +98,10 @@ while not game_over:
         if valid_location(board, col):
             row = next_open_row(board, col)
             drop_peice(board, row, col, 2)
+
+            if winning_move(board, 2):
+                print("Player 1 wins")
+                game_over = True
 
     print_board(board)
 
