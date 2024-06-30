@@ -43,10 +43,28 @@ def winning_move(board, peice):
     """
     Checks for 4 peices in a row
     """
-    #Horizontal row
+    # Horizontal row
     for c in range(COLUMN_COUNT-3):
         for r in range(ROW_COUNT):
             if board[r][c] == peice and board[r][c+1] == peice and board[r][c+2] == peice and board[r][c+3]:
+                return True
+    
+    # Vertical row
+    for c in range(COLUMN_COUNT):
+        for r in range(ROW_COUNT-3):
+            if board[r][c] == peice and board[r+1][c] == peice and board[r+2][c] == peice and board[r+3][c]:
+                return True
+    
+    # Positive Diagonal
+    for c in range(COLUMN_COUNT-3):
+        for r in range(ROW_COUNT-3):
+            if board[r][c] == peice and board[r+1][c+1] == peice and board[r+2][c+2] == peice and board[r+3][c+3]:
+                return True
+
+    # Negative Diagonal
+    for c in range(COLUMN_COUNT-3):
+        for r in range(ROW_COUNT, 3):
+            if board[r][c] == peice and board[r-1][c+1] == peice and board[r-2][c+2] == peice and board[r-3][c+3]:
                 return True
 
 
