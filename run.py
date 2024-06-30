@@ -7,7 +7,7 @@ def create_board():
     """
     Creates blank board
     """
-    board = np.zeros((6, 7))
+    board = np.zeros((ROW_COUNT, COLUMN_COUNT))
     
     return board
 
@@ -23,7 +23,7 @@ def valid_location(board, col):
     Checking location on the board is free
     to play into.
     """
-    return board[5][col] == 0
+    return board[ROW_COUNT -1][col] == 0
 
 def next_open_row(board, col):
     """
