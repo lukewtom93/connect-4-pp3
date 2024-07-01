@@ -77,8 +77,10 @@ def winning_move(board, peice):
 
 def run_game():
 
-    user_1 = input('Player One:')
-    user_2 = input('Player Two:')
+    print("Welcome to connect 4\nPlease input player one's name")
+    user_1 = input('Player One: ')
+    print("Please input player Two's name")
+    user_2 = input('Player Two: ')
     board = create_board()
     print(board)
     game_over = False
