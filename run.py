@@ -72,12 +72,16 @@ def winning_move(board, peice):
             if board[r][c] == peice and board[r-1][c+1] == peice and board[r-2][c+2] == peice and board[r-3][c+3]:
                 return True
 
-def replay_game():
-    replay = input('replay Y/N?: ').capitalize()
+def replay_game(replay):
+    
     while replay != 'Y':
         if replay != 'N':
             error_replay = input('Please Y/N?: ').capitalize()
-            return error_replay
+            replay = error_replay
+        else:
+            print('Thanks for playing')
+            break
+    return replay
         
     
         
@@ -116,7 +120,8 @@ def run_game():
                 if winning_move(board, 1):
                     print(f"{user_1} wins")
                     game_over = True
-                    replay_game()
+                    replay = input('replay Y/N?: ').capitalize()
+                    replay_game(replay)
                     
                     
         else:
@@ -137,7 +142,7 @@ def run_game():
                 if winning_move(board, 2):
                     print(f"{user_2} wins")
                     game_over = True
-                    replay_game()
+                    replay_game(replay)
                     
 
         print_board(board)
