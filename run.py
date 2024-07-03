@@ -152,6 +152,7 @@ def run_game():
                 if winning_move(board, 2):
                     print(f"{user_2} wins")
                     game_over = True
+                    replay = input('replay Y/N?: ').capitalize()
                     replay_game(replay)
                     
 
