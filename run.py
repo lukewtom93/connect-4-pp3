@@ -73,7 +73,9 @@ def winning_move(board, peice):
                 return True
 
 def replay_game(replay):
-    
+    if replay == 'Y':
+        run_game()
+
     while replay != 'Y':
         if replay != 'N':
             error_replay = input('Please Y/N?: ').capitalize()
