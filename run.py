@@ -73,13 +73,21 @@ def winning_move(board, peice):
                 return True
 
 def replay_game(replay):
+    """
+    Replays or exits the game based on user answer
+    """
+    
     if replay == 'Y':
         run_game()
 
     while replay != 'Y':
         if replay != 'N':
-            error_replay = input('Please Y/N?: ').capitalize()
-            replay = error_replay
+            error_replay = input('Please answer (Y) for yes, or (N) for no: ').capitalize()
+            if error_replay == 'Y':
+                run_game()
+            elif error_replay == 'N':
+                print('Thanks for playing')
+                break
         else:
             print('Thanks for playing')
             break
