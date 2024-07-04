@@ -37,6 +37,7 @@ def next_open_row(board, col):
     for row in range(ROW_COUNT):
         if board[row][col] == 0:
             return row
+        
 
 def drop_peice(board, row, col, peice):
     """
@@ -68,7 +69,7 @@ def winning_move(board, peice):
 
     # Negative Diagonal
     for c in range(COLUMN_COUNT-3):
-        for r in range(ROW_COUNT, 3):
+        for r in range(3, ROW_COUNT):
             if board[r][c] == peice and board[r-1][c+1] == peice and board[r-2][c+2] == peice and board[r-3][c+3]:
                 return True
 
