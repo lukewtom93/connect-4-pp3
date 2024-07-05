@@ -3,13 +3,14 @@ import numpy as np
 ROW_COUNT = 6
 COLUMN_COUNT = 7
 
+
 def create_board():
     """
     Creates blank board
     """
     board = np.zeros((ROW_COUNT, COLUMN_COUNT))
-    
     return board
+
 
 def print_board(board):
     """
@@ -18,17 +19,14 @@ def print_board(board):
     """
     print(np.flip(board, 0))
 
+
 def valid_location(board, col):
     """
     Checking location on the board is free
     to play into.
-    """  
-    
-  
+    """
     return board[ROW_COUNT-1][col] == 0
 
-        
-    
 
 def next_open_row(board, col):
     """
@@ -37,13 +35,14 @@ def next_open_row(board, col):
     for row in range(ROW_COUNT):
         if board[row][col] == 0:
             return row
-        
+
 
 def drop_peice(board, row, col, peice):
     """
     Drops players peice into the board
     """
     board[row][col] = peice
+
 
 def winning_move(board, peice):
     """
@@ -52,38 +51,43 @@ def winning_move(board, peice):
     # Horizontal row
     for c in range(COLUMN_COUNT-3):
         for r in range(ROW_COUNT):
-            if board[r][c] == peice and board[r][c+1] == peice and board[r][c+2] == peice and board[r][c+3]:
+            if (board[r][c] == peice and board[r][c+1] == peice and
+                board[r][c+2] == peice and board[r][c+3]):
                 return True
-    
+
     # Vertical row
     for c in range(COLUMN_COUNT):
         for r in range(ROW_COUNT-3):
-            if board[r][c] == peice and board[r+1][c] == peice and board[r+2][c] == peice and board[r+3][c]:
+            if (board[r][c] == peice and board[r+1][c] == peice and
+                board[r+2][c] == peice and board[r+3][c]):
                 return True
-    
+
     # Positive Diagonal
     for c in range(COLUMN_COUNT-3):
         for r in range(ROW_COUNT-3):
-            if board[r][c] == peice and board[r+1][c+1] == peice and board[r+2][c+2] == peice and board[r+3][c+3]:
+            if (board[r][c] == peice and board[r+1][c+1] == peice and
+                board[r+2][c+2] == peice and board[r+3][c+3]):
                 return True
 
     # Negative Diagonal
     for c in range(COLUMN_COUNT-3):
         for r in range(3, ROW_COUNT):
-            if board[r][c] == peice and board[r-1][c+1] == peice and board[r-2][c+2] == peice and board[r-3][c+3]:
+            if (board[r][c] == peice and board[r-1][c+1] == peice and
+                board[r-2][c+2] == peice and board[r-3][c+3]):
                 return True
+
 
 def replay_game(replay):
     """
     Replays or exits the game based on user answer
     """
-    
     if replay == 'Y':
         run_game()
 
     while replay != 'Y':
         if replay != 'N':
-            error_replay = input('Please answer (Y) for yes, or (N) for no: ').capitalize()
+            error_replay = input('Please answer (Y) for yes,'
+                                ' or (N) for no: ').capitalize()
             if error_replay == 'Y':
                 run_game()
             elif error_replay == 'N':
@@ -93,13 +97,7 @@ def replay_game(replay):
             print('Thanks for playing')
             break
     return replay
-        
-    
-        
 
-        
-
-    
 
 def run_game():
 
@@ -116,10 +114,11 @@ def run_game():
         if turn == 0:
 
             try:
-                col = int(input(f"{user_1} is up\nSelect a column between 0-6: "))
+                col = int(input(f"{user_1} is up\n"
+                                "Select a column between 0-6: "))
                 if col > ROW_COUNT:
                     raise ValueError(f'{col} is not a column.')
-                    
+
             except ValueError as e:
                 print(f'Oops!\n{e}')
                 continue
@@ -133,15 +132,14 @@ def run_game():
                     game_over = True
                     replay = input('replay Y/N?: ').capitalize()
                     replay_game(replay)
-                    
-                    
+
         else:
-            
             try:
-                col = int(input(f"{user_2} is up\nSelect a column between 0-6: "))
+                col = int(input(f"{user_2} is up\n"
+                                "Select a column between 0-6: "))
                 if col > ROW_COUNT:
                     raise ValueError(f'{col} is not a column.')
-                    
+
             except ValueError as e:
                 print(f'Oops!\n{e}')
                 continue
@@ -155,20 +153,11 @@ def run_game():
                     game_over = True
                     replay = input('replay Y/N?: ').capitalize()
                     replay_game(replay)
-                    
 
         print_board(board)
 
         turn += 1
-        turn = turn % 2 
+        turn = turn % 2
 
-    
-    
-        
-        
 
 run_game()
-
-
-
-    
