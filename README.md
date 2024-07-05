@@ -1,32 +1,87 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Connect 4
 
-Welcome,
+Connect 4 is a Python terminal game, which runs in the Code institute mock terminal on Heroku.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+Two users will try and beat each other in the classic connect 4 game by getting 4 peices in a row.
 
-## Reminders
+![Responsive Mockup](assets/images/connect_4_mockup.png)
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+## How to play
 
-## Creating the Heroku app
+Users will play against each other by selecting a column each turn and trying to complete a row of 4.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+The user one's peice is indicated by a ```1``` and user two's peice indicated by a ```2```.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Fetures
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+### Existing Features
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+- __Name Input__
+    - Both players will be required to input there names at the start of the game.
+    - Allows users to easily determine which turn is there.
 
-Connect your GitHub repository and deploy as normal.
+![Name Inputs](assets/images/name_inputs.png)
 
-## Constraints
+- __Accepts User Inputs__
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+![User Inputs](assets/images/user_inputs.png)
 
----
+- __Input validation and error-checking__
+    - User cannot input numbers higher than 6
+    - Numbers must be used
 
-Happy coding!
+![Data Validation](assets/images/data_validation.png)
+
+- __Replay game__
+    - on compleation of game users are asked if they want to replay
+    - for the selection of ```Y``` a new game is generated
+    - for the selection of ```N``` the game exits
+
+![Replay yes](assets/images/replay_yes.png)
+
+![Replay no](assets/images/replay_no.png)
+
+- __Replay game input validation__
+    - Only the letters ```y``` and ```n``` are accepted.
+
+![Replay Error](assets/images/replay_error.png)
+
+### Future Features
+
+- Allow user to select board size
+- Add a leader board
+
+## Data Model
+
+Using the ```numpy``` libray creaing a matrix for the game board which holds the players input.
+
+### Testing
+
+I have manually tested this projectby doing the following
+
+- Passed the code through the PEP8 linter and confirmed there are no problems
+
+![PEP8](assets/images/pep8.png)
+
+- Given invalid inputs such as numbers over 6 and strings when numbers are expected
+
+### Deployment
+
+This project was deployed using Code Institute's mock terminal for Heroku
+
+- Steps for deployment
+
+    - Fork or clone this repository
+
+    - Create a new Heroku app
+
+    - Set the buildbacks to ```Python``` and ```NodeJS``` in that order
+
+    - Link the Heroku app to the repository
+
+    - Click on __Deploy__
+
+### Credits
+
+- Code Institute for the deployment terminal
+- Keith Galli for the youtube tutorial found [here](https://www.youtube.com/watch?v=UYgyRArKDEs&list=PLFCB5Dp81iNV_inzM-R9AKkZZlePCZdtV&ab_channel=KeithGalli)
