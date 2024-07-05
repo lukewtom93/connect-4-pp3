@@ -4,6 +4,8 @@ Connect 4 is a Python terminal game, which runs in the Code institute mock termi
 
 Two users will try and beat each other in the classic connect 4 game by getting 4 peices in a row.
 
+[Here is a live version of my project](https://connect-4pp3-007afd748785.herokuapp.com/)
+
 ![Responsive Mockup](assets/images/connect_4_mockup.png)
 
 ## How to play
